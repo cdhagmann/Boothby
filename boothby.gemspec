@@ -9,16 +9,16 @@ Gem::Specification.new do |spec|
   spec.authors = ["Christopher Hagmann"]
   spec.email = ["cdhagmann@gmail.com"]
 
-  spec.summary = "Groundskeeper to manage your database seeds"
-  spec.description = "Groundskeeper to manage your database seeds"
-  spec.homepage = "https://cdhagmann.com/boothby"
+  spec.summary = "Groundskeeper to manage your rails application"
+  spec.description = "Groundskeeper to manage your rails application"
+  spec.homepage = "https://cdhagmann.com/Boothby"
   spec.required_ruby_version = ">= 2.7.0"
 
-  spec.metadata["allowed_push_host"] = "Groundskeeper to manage your database seeds"
+  spec.metadata["allowed_push_host"] = "Groundskeeper to manage your rails application"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/cdhagmann/boothby"
-  spec.metadata["changelog_uri"] = "https://github.com/cdhagmann/boothby/CHANGLOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/cdhagmann/Boothby"
+  spec.metadata["changelog_uri"] = "https://github.com/cdhagmann/Boothby/CHANGLOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
