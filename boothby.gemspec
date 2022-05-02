@@ -14,8 +14,6 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://cdhagmann.com/Boothby"
   spec.required_ruby_version = ">= 2.7.0"
 
-  spec.metadata["allowed_push_host"] = "Groundskeeper to manage your rails application"
-
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/cdhagmann/Boothby"
   spec.metadata["changelog_uri"] = "https://cdhagmann.com/Boothby/CHANGELOG.html"
