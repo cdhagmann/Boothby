@@ -1,0 +1,164 @@
+# rubocop version: 1.10.0
+# rubocop-performance version: 1.9.2
+# rubocop-rspec version: 2.2.0
+#
+
+AllCops:
+  Exclude:
+    - '**/*.gemspec'
+    - '**/Gemfile'
+  NewCops: enable
+  TargetRubyVersion: 2.7
+
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+Layout/CaseIndentation:
+  IndentOneStep: true
+Layout/ClassStructure:
+  Enabled: true
+Layout/EmptyLineAfterMultilineCondition:
+  Enabled: true
+Layout/FirstArrayElementLineBreak:
+  Enabled: true
+Layout/FirstHashElementLineBreak:
+  Enabled: true
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+Layout/FirstMethodParameterLineBreak:
+  Enabled: true
+Layout/LineEndStringConcatenationIndentation:
+  EnforcedStyle: indented
+Layout/LineLength:
+  Max: 120
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: true
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+Layout/EmptyLineAfterGuardClause:
+  Enabled: true
+
+Metrics/CyclomaticComplexity:
+  Max: 5
+Metrics/MethodLength:
+  Max: 20
+Metrics/ModuleLength:
+  Max: 150
+Metrics/PerceivedComplexity:
+  Max: 5
+
+Naming/BlockParameterName:
+  AllowedNames:
+    - id
+    - x
+    - y
+    - k
+    - v
+    - _
+Naming/MethodParameterName:
+  AllowedNames:
+    - id
+    - x
+    - y
+    - _
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Performance/AncestorsInclude:
+  Enabled: false
+Performance/ArraySemiInfiniteRangeSlice:
+  Enabled: true
+Performance/Casecmp:
+  Enabled: false
+Performance/CaseWhenSplat:
+  Enabled: true
+Performance/IoReadlines:
+  Enabled: true
+
+RSpec/BeEql:
+  Enabled: false
+RSpec/DescribedClassModuleWrapping:
+  Enabled: true
+RSpec/EmptyLineAfterExample:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/ExpectChange:
+  EnforcedStyle: block
+RSpec/ImplicitSubject:
+  Enabled: false
+RSpec/LeadingSubject:
+  Enabled: false
+RSpec/MessageChain:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/NamedSubject:
+  Enabled: false
+RSpec/NestedGroups:
+  Enabled: false
+RSpec/ReturnFromStub:
+  Enabled: false
+RSpec/SubjectStub:
+  Enabled: false
+
+Style/AccessModifierDeclarations:
+  EnforcedStyle: inline
+Style/ArrayCoercion:
+  Enabled: true
+Style/AutoResourceCleanup:
+  Enabled: true
+Style/ClassMethodsDefinitions:
+  Enabled: true
+Style/CollectionMethods:
+  Enabled: true
+Style/ConditionalAssignment:
+  EnforcedStyle: assign_inside_condition
+  IncludeTernaryExpressions: false
+Style/DateTime:
+  Enabled: true
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+Style/ExponentialNotation:
+  EnforcedStyle: scientific
+Style/FormatStringToken:
+  Enabled: false
+Style/HashAsLastArrayItem:
+  Enabled: false
+Style/IpAddresses:
+  Enabled: true
+Style/Lambda:
+  EnforcedStyle: literal
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+Style/MultilineMethodSignature:
+  Enabled: true
+Style/NumericPredicate:
+  Enabled: false
+Style/OptionHash:
+  Enabled: true
+Style/RedundantArgument:
+  Enabled: false
+Style/RegexpLiteral:
+  AllowInnerSlashes: true
+Style/Send:
+  Enabled: true
+Style/SlicingWithRange:
+  Enabled: false
+Style/StringMethods:
+  Enabled: true
+Style/TrailingCommaInBlockArgs:
+  Enabled: true
+Style/DocumentationMethod:
+  Enabled: true
+Style/RedundantBegin:
+  Enabled: true
+Style/ZeroLengthPredicate:
+  Enabled: true
