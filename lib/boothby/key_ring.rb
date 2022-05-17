@@ -12,7 +12,7 @@ module Boothby
       config_files = Dir[Rails.root.join('config/*.y{a,}ml{.erb,}')]
       @configs = config_files.to_h do |config|
         config_name = File.basename(config).split('.').first.to_sym
-        [config_name, Boothby::YAMLReader.new(config)]
+        [config_name, Boothby::ConfigurationData.from_yaml(config)]
       end
     end
 
