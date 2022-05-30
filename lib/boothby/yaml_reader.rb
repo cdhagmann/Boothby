@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require_relative 'root'
+
 module Boothby
   # Read YAML files
-  class YAMLReader
+  class YAMLReader << Boothby::Base
     attr_reader :filename
 
     def initialize(name)
@@ -14,14 +16,20 @@ module Boothby
       full_config[environment].dig(*attributes) || full_config.dig(*attributes)
     end
 
+    def key?(key_name)
+      !get(key_name).nil?
+    end
+
     def method_missing(method_name, *args, **kwargs, &block)
-      env = kwargs.delete(:environment) || kwargs.delete(:env)
-      return get(method_name, environment: env) unless env.nil?
+      return super unless key?(method_name)
 
-      cfg = full_config.fetch(method_name, nil)
-      return (args.empty? ? cfg : cfg.dig(*args)) unless cfg.nil?
+      environment = kwargs.delete(:environment) || kwargs.delete(:env)
+      attributes = [method_name] + args
+      get(*attributes, environment: environment)
+    end
 
-      get(method_name) || super
+    def respond_to_missing?(method_name)
+      return super unless key?(method_name)
     end
 
     private def full_config
@@ -65,7 +73,7 @@ module Boothby
     end
 
     private def absolute_path?(file)
-      file.start_with?(Rails.root.to_s)
+      file.start_with?(Boothby::Root.root.to_s)
     end
 
     private def find_file(prefix)
