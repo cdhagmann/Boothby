@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors = ['Christopher Hagmann']
   spec.email = ['cdhagmann@gmail.com']
 
-  spec.summary = 'Groundskeeper to manage your rails application'
-  spec.description = 'Groundskeeper to manage your rails application'
+  spec.summary = '[DEPRECATED] Groundskeeper to manage your rails application'
+  spec.description = 'DEPRECATED: This gem is no longer maintained. Groundskeeper to manage your rails application.'
   spec.homepage = 'https://cdhagmann.com/Boothby'
   spec.required_ruby_version = '>= 2.7.0'
 
