@@ -1,37 +1,75 @@
 # Boothby
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/boothby`. To experiment with that code, run `bin/console` for an interactive prompt.
+A Rails application lifecycle manager. Boothby provides CLI commands to standardize common development tasks across a team: setting up a fresh clone, updating after pulling new code, and seeding the database.
 
-TODO: Delete this and the text above, and describe your gem
+Named after [Boothby](https://memory-alpha.fandom.com/wiki/Boothby), the groundskeeper of Starfleet Academy.
+
+> **Archived.** This gem is no longer maintained.
 
 ## Installation
 
-Install the gem and add to the application's Gemfile by executing:
+Add to your application's Gemfile:
 
-    $ bundle add boothby
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install boothby
+```ruby
+gem 'boothby'
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### `boothby setup`
 
-## Development
+Run once after cloning the repo:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```sh
+$ boothby setup
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+- Copies any `*.example` config files that don't already have a real counterpart
+- Runs `bundle install` and `yarn install` (if `package.json` exists)
+- Runs `rails db:prepare db:test:prepare`
+- Clears logs and tmp files
+- Restarts the application server
 
-## Contributing
+### `boothby update`
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/boothby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/boothby/blob/main/CODE_OF_CONDUCT.md).
+Run after pulling new code:
 
-## Code of Conduct
+```sh
+$ boothby update
+```
 
-Everyone interacting in the Boothby project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/boothby/blob/main/CODE_OF_CONDUCT.md).
+Same as `setup` but runs `db:migrate` instead of `db:prepare`.
 
-## Copyright
+### `boothby seed`
+
+Seeds the database using a structured `db/seeds.yml` config:
+
+```sh
+$ boothby seed
+```
+
+Seeds are organized by environment. A `:base` set runs for all environments; additional sets run only for the matching Rails environment. Progress is shown via animated terminal spinners.
+
+### `Boothby::KeyRing`
+
+Auto-loads all YAML files from `config/` and exposes them as methods with environment-aware access and dot notation:
+
+```ruby
+Boothby::KeyRing.database       # reads config/database.yml
+Boothby::KeyRing.application    # reads config/application.yml
+```
+
+## Configuration
+
+```ruby
+# config/initializers/boothby.rb
+Boothby.configure do |config|
+  config.root                    = Rails.root
+  config.seeds_configuration     = 'db/seeds.yml'
+  config.configuration_directory = 'config'
+end
+```
+
+## License
 
 Copyright (c) 2022 Christopher Hagmann. See [MIT License](LICENSE.txt) for further details.
